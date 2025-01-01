@@ -1,27 +1,127 @@
+@font-face {
+    font-family: 'Roboto';
+    src: url("fonts/Roboto/Roboto-Regular.ttf");
+}
+
+@font-face {
+    font-family: 'Roboto Bold';
+    src: url("fonts/Roboto/Roboto-Bold.ttf");
+}
+
 * {
+    --main-blue: #0284c7;
+    --light-bg: #e0e7ff;
+
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+
+.sidebar p,
+.title,
+.absolute-title,
+.username,
+.hi,
+button  {
+    font-family: 'Roboto Bold';
+}
+
+.sidebar p:hover,
+.title:hover,
+.absolute-title:hover,
+.username:hover,
+.hi,
+button:hover,
+svg:hover {
+    cursor: pointer;
+}
+
+body {
+    background-color: var(--light-bg);
 }
 
 .container {
     display: grid;
-    grid-template-columns: 1fr 5fr;
-    grid-template-rows: 130px 800px;
+    grid-template-columns: 1fr 4.5fr;
+    grid-template-rows: 170px 800px;
+    row-gap: 10px; /* Necessary for header shadow to work */
+}
+
+/*----------------------------------------------Icons and SVGs-------------------------------------------------*/
+
+.icon {
+    width: 25px;
+    align-self: center;
+    display: flex;
+}
+
+.sidebar svg {
+    fill: white;
+    width: 25px;
+}
+
+.dashboard .icon {
+    width: 50px;
+    height: 50px;
+}
+
+.dashboard .icon svg {
+    fill: white;
+    width: 50px;
+}
+
+.icon + p {
+    padding-left: 20px;
+}
+
+.header svg {
+    fill: black;
+}
+
+.main-content svg {
+    fill: rgb(88, 88, 88);
+}
+
+.profile-icon {
+    min-width: 40px;
+    min-height: 40px;
+    border-radius: 100px;
+}
+
+.header .profile-icon, .item:nth-of-type(2) .profile-icon {
+    background-color: rgb(255, 206, 46);
+}
+
+.greeting .profile-icon {
+    width: 60px; 
+    height: 60px;
+}
+
+.item:nth-of-type(1) .profile-icon {
+    background-color: rgb(22, 153, 7);
+}
+
+.item:nth-of-type(3) .profile-icon {
+    background-color: rgb(23, 149, 161);
+}
+
+.item:nth-of-type(4) .profile-icon {
+    background-color: rgb(231, 135, 218);
 }
 
 /*--------------------------------------------------Header------------------------------------------------------*/
 .header {
     background-color: white;
     display: grid;
-    grid-template-rows: 30px 1fr;
+    grid-template-rows: 50px 1fr;
     padding-top: 15px;
     padding-left: 40px;
     align-content: center;
-    font-weight: bold;
+    box-shadow: 0.3px 0.3px 10px rgb(188, 188, 188);
 }
 
-.header .row-1 {
+.row-1 {
     display: grid;
     grid-template-columns: 2fr 1fr;
 }
@@ -32,17 +132,10 @@
     height: 24px;
 }
 
-.search-icon, .icon {
-    width: 20px;
-    height: 20px;
-    background-color: rgb(127, 79, 79);
-    align-self: center;
-}
-
 input {
     padding-left: 10px;
     width: 80%;
-    height: 24px;
+    height: 28px;
     border-style: none;
     outline-style: none;
     border-radius: 20px;
@@ -52,41 +145,30 @@ input {
 .account {
     display: flex;
     justify-content: center;
-    gap: 10px;
-    height: 30px;
+    gap: 30px;
+    height: 40px;
+    padding-right: 90px;
 }
 
-.icon, .username {
+.username {
     align-self: center;
-}
-
-
-.profile-icon {
-    width: 30px;
-    height: 30px;
-    background-color: brown;
 }
 
 .row-2 {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 50px;
-}
 
-.row-2 > * {
-    display: flex;
-    gap: 10px;
-    align-items: center;
-
+    & > * {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+    
+    }
 }
 
 .greeting {
     padding-left: 10px;
-}
-
-.greeting .profile-icon {
-    width: 50px;
-    height: 50px; 
 }
 
 .hi-username {
@@ -95,6 +177,7 @@ input {
 
 .hi {
     font-size: 12px;
+    margin-bottom: 0.2em;
 }
 
 .buttons {
@@ -105,49 +188,40 @@ input {
 }
 
 button {
-    width: 27%;
-    height: 2.5em;
-    font-weight: bold;
-    border-radius: 15px;
+    width: 26%;
+    height: 2.9em;
+    border-radius: 25px;
     border-style: none;
-    background-color: rgb(37, 137, 199);
+    background-color: var(--main-blue);
     color: white;
+    font-size: 15px;
 
 }
 
-
 /*--------------------------------------------------Sidebar---------------------------------------------*/
 .sidebar {
-    background-color: rgb(37, 137, 199);
+    background-color: var(--main-blue);
     color: white;
     grid-row: 1 / -1;
     padding-left: 20px;
     display: grid;
-    grid-template-rows: 50px 200px 130px ;
-    gap: 20px;
-    font-weight: bold;
+    grid-template-rows: 50px 260px 130px;
+    gap: 40px;
     padding-top: 15px;
+    position: relative;
 
 }
 
 .dashboard {
-    font-size: 24px;
+    font-size: 22px;
     display: grid;
     grid-template-columns: 50px 1fr;
-    width: 80%;
     height: 50px;
-}
-
-.dashboard .icon {
-    width: 50px;
-    height: 50px;
+    padding-right: 10px;
 }
 
 .dashboard p {
     align-self: center;
-}
-
-.icon + p {
     padding-left: 10px;
 }
 
@@ -155,40 +229,58 @@ button {
 .icons-2 {
     display: grid;
     padding: 10px;
+    gap: 16px;
+
+    & div {
+        display: grid;
+        grid-template-columns: 20px 1fr;
+        grid-template-rows: 25px;
+        width: 80%;
+    }
+
+    & p {
+        align-self: center;
+        font-size: 18px;
+    }
 }
 
-.icons-1 > div, .icons-2 > div {
-    display: grid;
-    grid-template-columns: 20px 1fr;
-    grid-template-rows: 20px;
-    width: 80%;
-}
-
-.icons-1 p, .icons-2 p {
-    align-self: center;
-    font-size: 18px;
+.credits {
+    position: absolute;
+    bottom: 20px;
+    left: 30px;
+    font-size: 12px;
+    padding-right: 20px;
+    & a {
+        text-decoration: none;
+        color: white;
+        font-family: 'Roboto Bold';
+    }
 }
 
 /*---------------------------------------Main Content---------------------------------------------------------*/
 .main-content {
-    background-color: rgb(212, 225, 227);
+    background-color: var(--light-bg);
     padding-left: 20px;
     padding-top: 10px;
     display: grid;
-    grid-template-columns: 2.4fr 1fr 20px;
-    grid-template-rows: 1.5fr 1fr;
+    grid-template-columns: 2.6fr 1fr 20px;
+    grid-template-rows: 1.2fr 1fr;
     row-gap: 50px;
     padding-bottom: 30px;
+    max-height: 800px;
 }
 
-.title, .small-title {
-    font-weight: bold;
+.title {
+    margin-bottom: 0.3em;
+}
+
+.paragraph {
+    color: rgb(79, 79, 79);
 }
 
 .projects,
 .announcements-container {
     padding-top: 40px;
-
 }
 
 .projects {
@@ -198,34 +290,47 @@ button {
     display: grid;
     padding-right: 20px;
     grid-template-columns: repeat(2, minmax(250px, 1fr));
+    grid-template-rows: repeat(auto-fit, minmax(200px, 1fr));
     gap: 20px;
+
+    & .paragraph {
+        font-size: 16px;
+    }
+}
+
+.announcements, .trending {
+    display: grid;
+    padding: 20px 10px 0px 20px;
+    background-color: white;
+    border-radius: 10px;
+
+    & .paragraph {
+        font-size: 14px;
+    }
 }
 
 .project {
-    border: 1px solid gray;
     border-left: 10px solid orange;
     border-radius: 10px;
     position: relative;
-    padding: 30px;
+    padding: 20px;
     background-color: white;
-}
 
-.project .icon {
-    width: 40px;
-    height: 40px;   
+    & .icon {
+        width: 30px;
+        height: 30px;   
+    }    
 }
 
 .icons {
     display: flex;
-    gap: 5px;
+    gap: 20px;
     position: absolute;
     bottom: 20px;
     right: 20px;
 }
 
 .announcements-container {
-    grid-row: 1;
-    grid-column: 2;
     position: relative;
     display: grid;
 }
@@ -236,40 +341,49 @@ button {
     position: relative;
 }
 
-.announcements, .trending {
+.announcements, .trending, .project {
+    box-shadow: 4px 3px 7px rgb(188, 188, 188);
+}
+
+.announcements {
     display: grid;
-    border: 1px solid gray; 
-    padding: 30px;
-    background-color: white;
-    border-radius: 10px;
+    gap: 10px;
+    
+    & > div {
+        padding-right: 10px;
+    }
+
+    & > *:not(:last-child) {
+        border-bottom: 1px solid rgb(196, 198, 199);
+    }
 }
 
 .trending {
     gap: 10px;
     padding: 20px;
     height: 100%;
-}
 
-.trending .item {
-    display: flex;
-    gap: 10px; 
-}
+    & .item {
+        display: flex;
+        gap: 10px; 
+    
+        & > * {
+            align-self: center;
+        }
 
-.item > * {
-    align-self: center;
+        & > .profile-icon {
+            width: 40px;
+            height: 40px;
+        }
+    }
 }
-
-.item > .profile-icon {
-    width: 40px;
-    height: 40px;
-}
-
 
 .absolute-title {
     position: absolute;
     color: black;
     top: 10px;
-    font-weight: bold;
+    left: 5px;
+    font-size: 18px;
 }
 
 .trending-container .absolute-title {
